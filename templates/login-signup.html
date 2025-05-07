@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up & Login</title>
+    <link rel="stylesheet" href="../assets/css/globles.css">
+    <link rel="stylesheet" href="../assets/css/login-signup.css">
+</head>
+
+<body>
+    <section class="section">
+        <div class="outer-box">
+            <div class="inner-box">
+                <div class="content">
+                    <!-- Sign-up Section -->
+                    <div class="sign-up-section">
+                        <h2>Sign-Up</h2>
+                        <div class="register-form">
+                            <form id="sign-up-form">
+                                <div class="email-input">
+                                    <input type="email" name="email" id="signup-email" placeholder="example@gmail.com" required>
+                                </div>
+                                <div class="pass-input">
+                                    <input type="password" name="password" id="signup-password" placeholder="Password" required>
+                                </div>
+                                <div class="submit-btn">
+                                    <input type="submit" value="Sign Up">
+                                </div>
+                            </form>
+                            <div class="sign-up-btn">
+                                <button onclick="changePage()">Log-in</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Login Section -->
+                    <div id="top-box" class="top-box">
+                        <img src="../images/login.jpg" alt="">
+                    </div>
+                    <div class="login-section">
+                        <h2>Login</h2>
+                        <div class="login-form">
+                            <form id="login-form">
+                                <div class="email-input">
+                                    <input type="email" name="email" id="login-email" placeholder="example@gmail.com" required>
+                                </div>
+                                <div class="pass-input">
+                                    <input type="password" name="password" id="login-password" placeholder="Password" required>
+                                </div>
+                                <div class="submit-btn">
+                                    <input type="submit" value="Log In">
+                                </div>
+                            </form>
+                            <div class="sign-up-btn">
+                                <button onclick="changePage()">Sign-up</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let toggle = false;
+        function changePage() {
+            toggle = !toggle;
+            document.getElementById('top-box').style.transform = toggle ? "translateX(0%)" : "translateX(100%)";
+        }
+    </script>
+    <script src="../assets/js/sign-up-login.js"></script>
+</body>
+
+</html>
