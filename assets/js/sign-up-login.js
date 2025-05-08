@@ -11,6 +11,11 @@ import {
   createUserWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 import { serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // window.location.href = "../dashboard/dashboard.html";
+  }
+});
 // Here I am handle Login details and Signup authtication part dom onload
 document.addEventListener("DOMContentLoaded", () => {
   const loginPage = document.getElementById("login-form");
@@ -63,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
               shareLocation: true,
             },
           });
-
+          console.log(user)
           return updateProfile(user, {
             displayName: userName,
           });
@@ -124,9 +129,4 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
   }
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      window.location.href = "../dashboard/dashboard.html";
-    }
-  });
 });

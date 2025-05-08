@@ -18,6 +18,27 @@
         h1 {
             font-size: 33px;
         }
+
+        div.images-cloud {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        div.images-cloud>img {
+            height: 100px;
+            width: 100px;
+            border-radius: 5px;
+        }
+
+        
+
+        @media (max-width : 700px) {
+            div.images-cloud {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     </style>
     <script src="https://upload-widget.cloudinary.com/global/all.js"></script>
 </head>
@@ -27,73 +48,97 @@
         <div id="header"></div>
         <main>
             <section class="section">
+                    <div id="loader">
+                        <div class="loading"></div>
+                    </div>
                 <div id="sidebar"></div>
+
                 <div class="outer-box">
+
                     <h1>📸 Create a New Memory <p style="font-size: 1rem;">Capture and preserve a special moment by
                             adding photos, stories, and more.</p>
                     </h1>
+
                     <div class="inner-box">
                         <div class="content">
                             <div class="memory-create">
-                                <form style="margin-bottom: 100px;">
+                                <form id="createMemoryForm" style="margin-bottom: 100px;">
                                     <div>
                                         <div class="basic-details">
                                             <h3>📝 Basic Information</h3>
                                             <div>
+                                                Enter Memory Title...
                                                 <input required placeholder="Enter Memory Title....*" type="text"
                                                     name="title" id="memroy-title">
                                             </div>
                                             <div>
+                                                Detailed About your memory
                                                 <textarea placeholder="Detailed About your memory (optional)"
                                                     name="description" id="description"></textarea>
                                             </div>
                                             <div>
-                                                <input  style="width: fit-content;" required placeholder="Date"
+                                                <p> Select Your Memory Date</p>
+                                                <input style="width: fit-content;" required placeholder="Date"
                                                     type="date" name="title" id="memroy-date">
                                             </div>
                                             <div>
-                                                <input required style="width: fit-content;" type="text" id="locationInput"
-                                                    placeholder="Detecting your Location..." readonly>
-                                                <button type="button" id="locationButton">📍 Use My Location</button>
-                                                <div id="map" style=" margin: 2rem 0; height: 200px; width:200px;">
+                                                <p>Click on map</p>
+                                                <input required style="width: fit-content;" type="text"
+                                                    id="locationInput" placeholder="Detecting your Location..."
+                                                    readonly>
+                                                <button class="btn" type="button" id="locationButton">📍 Use My
+                                                    Location</button>
+                                                <div id="map" style=" margin: 1.2rem 0; height: 250px; width:250px;">
 
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="media-details">
                                             <h3>🖼️ Media Content (optional)</h3>
-                                            <div>
+                                            <div class="images-cloud" id="imagesFromCloud">
+
+                                            </div>
+                                            <div style="position: relative;">
                                                 Add photos memory (optional)
-                                                <input type="file" id="photos" name="photos" accept="image/*" multiple>
-                                                <button class="btn" type="button" id="uploadImageBtn">Upload Photos</button>
+                                                <input type="file" id="photos" name="photos" accept="image/*">
+                                                <button style="position: absolute; right: 2px ; top: 45%;" class="btn"
+                                                    type="button" id="uploadImageBtn">Upload</button>
+                                                <input style="margin-bottom: 1px;" readonly type="hidden" id="photoUrl"
+                                                    name="photoUrl">
                                             </div>
                                             <div>
-                                                add video clips ( optional )
+                                                add video clips ( optional ❌ )
                                                 <input type="file" id="videos" name="videos" accept="video/*">
                                             </div>
                                             <div style="display: flex; flex-direction: column; gap: 10px; ">
-                                               <div>
-                                                add voice message ( optional )
-                                                <input type="file" id="voiceNote" name="voiceNote" accept="audio/*"
-                                                    multiple>
-                                               </div>
                                                 <div>
-                                                <div style="display: flex; flex-direction: column;">
-                                                    <span>Record your voice message</span>
-                                                <button style="width: fit-content; margin-bottom: 5px;" class="btn" type="button"  id="startRecording">Start Recording</button>
-                                                <button style="width: fit-content; margin-bottom: 5px;" class="btn" type="button"  id="stopRecording" disabled>Stop Recording</button>
+                                                    add voice message ( optional ❌)
+                                                    <input type="file" id="voiceNote" name="voiceNote" accept="audio/*">
                                                 </div>
-                                                <audio id="audioPreview" controls></audio>
+                                                <div>
+                                                    <span>Record your voice message</span>
+                                                    <div style="display: flex; flex-direction: row; gap: 5px;">
+                                                        <button style="width: fit-content; margin-bottom: 5px;"
+                                                            class="btn" type="button" id="startRecording">Start
+                                                            Recording</button>
+                                                        <button style="width: fit-content; margin-bottom: 5px;"
+                                                            class="btn" type="button" id="stopRecording" disabled>Stop
+                                                            Recording</button>
+                                                    </div>
+                                                    <audio disabled src="./audio/audio.mp3" id="audioPreview"
+                                                        controls></audio>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="album-tags">
                                             <h3>🏷️ Organization & Tag</h3>
                                             <div>
+                                                Add your #Hastags
                                                 <input type="text" placeholder="Add : #Hastags #Vacation, #Family"
                                                     name="tags" id="tags">
                                             </div>
                                             <div>
+                                                Select Album
                                                 <select name="memory-album" id="memory-album">
                                                     <option value="">Select an Album</option>
                                                     <option value="Vacation Album">Vacation Album</option>
@@ -113,7 +158,9 @@
                                                     placeholder="use email see Collaboration user" />
                                                 <ul id="collabInputlist">enter email.....</ul>
                                             </div>
-                                            <div class="privacy">
+                                            <div class="privacy"
+                                                style="display: flex; flex-direction: column; justify-content: center; gap: 5px;">
+                                                Choose Your Privacy status
                                                 <div>
                                                     <input type="radio" value="Private" name="privacy" id="privacy-only"
                                                         checked>
@@ -121,18 +168,20 @@
                                                 </div>
                                                 <div>
                                                     <input type="radio" value="Costom" name="privacy"
-                                                        id="privacy-costom"><label for="privacy-costom">Costom: Friends/Faimly</label>
+                                                        id="privacy-costom"><label for="privacy-costom">Costom:
+                                                        Friends/Faimly</label>
 
                                                 </div>
                                                 <div>
                                                     <input type="radio" value="Public" name="privacy"
-                                                        id="privacy-public"><label for="privacy-public">🌍 Public</ for="privacy-public">
+                                                        id="privacy-public"><label for="privacy-public">🌍 Public</
+                                                            for="privacy-public">
 
                                                 </div>
                                             </div>
                                         </div>
                                         <div>
-                                            <button class="btn" type="submit">Create Memory</button>
+                                            <button id="createMemorySubmitBtn" class="btn btn-md" type="submit">Create Memory</button>
                                         </div>
                                     </div>
                                 </form>
@@ -149,7 +198,6 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="module" src="../assets/dashboard/header-aside-load.js"></script>
 <script type="module" src="../assets/dashboard/getUser.js"></script>
 <script type="module" src="../assets/dashboard/location.js"></script>

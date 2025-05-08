@@ -143,6 +143,51 @@ aside .nav-items > div > a {
   border-radius: 0.7rem;
   color: var(--secondary);
 }
+
+
+/* loader */
+div#loader {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: calc(100% + 20px);
+  place-content: center;
+  background-color: rgba(0, 0, 0, 0.792);
+}
+
+div#loader>div {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  z-index: 999;
+  border: 20px solid transparent;
+  border-top-color: var(--success);
+  border-right-color: var(--secondary);
+  animation: rotateLoader 2s linear infinite;
+}
+
+/* Keyframe for rotation */
+@keyframes rotateLoader {
+  0% {
+      transform: rotate(0deg);
+  }
+
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 700px) {
   header > nav > div.nav-links {
     display: none;

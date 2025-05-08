@@ -10,23 +10,25 @@ Authentication
 	js
 		auth.js
 		db.js
-		memory.js
-		map.js
-		ai.js
+		signup-login.js
 
-Memory Creation
-	form
-		create-memory.html / js
-		album.html
+
+Dashboard
+		Memory Creation
+			memroy create
+				collection "memories"
+					store -> userId
+			memory albums
+				collection "albums"
+					store userId
+
 	js
-		
-	utils
-		config.js --> for auth	
 	components
-		header.html
-		footer.html
 		memory-card.html
 		album.html
+		create-memory.html
+		albums.html
+		
 
 
 
@@ -41,5 +43,4 @@ Memory Entry Creation
 	Interactive Memory Map,
 	AI Integration to generate a memory video.
 	Dark Mode
-
 ```
