@@ -2,9 +2,10 @@
 :root {
   --background: #daeaeb;
   --text: #000;
-  --primary: #ff00be; /* blue-500 */
+  --primary: #2c0637; /* blue-500 */
   --secondary: #f59e0b; /* slate-500 */
   --success: #10b981;
+  --warning: rgb(250, 62, 62);
 }
 
 * {
@@ -42,6 +43,10 @@ a {
   color: inherit;
 }
 
+abbr {
+  text-decoration: none;
+}
+
 h1,
 h2,
 h3,
@@ -71,17 +76,35 @@ h6 {
   color: var(--background);
 }
 .btn-warning {
-  background-color: rgb(232, 160, 52);
-  color: black;
+  background-color: rgb(168, 31, 10);
+  color: white;
+  border: none;
 }
+
 .btn-md {
   padding: 0.9rem 1.5rem;
   font-weight: 800;
   font-size: 1.2rem;
 }
+.btn-xs {
+  padding: 0.2rem;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+}
+.btn-xs:hover {
+  cursor: pointer;
+  text-shadow: 2px 2px 5px rgb(2, 2, 30);
+}
 
 .btn:hover {
   background-color: var(--primary);
+}
+
+.btn-warning:hover {
+  background-color: rgb(192, 57, 36);
+  color: white;
+  border: none;
 }
 
 /* Section */
@@ -101,4 +124,15 @@ h6 {
   .outer-box {
     padding: 0 0rem;
   }
+}
+
+
+/* Scroll bar design */
+div.inner-box::-webkit-scrollbar {
+  width: 1px;
+}
+
+div.inner-box::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 4px;
 }

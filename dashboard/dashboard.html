@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard ( Mohanlal ) || Memory Lane</title>
+    <link rel="stylesheet" href="../assets/css/globles.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="header"></div>
+        <main>
+            <section class="section">
+                <div id="sidebar"></div>
+                <div class="outer-box">
+                    <h1><span>Welcome, <span id="user-name">Mohanlal!</span></span></h1>
+                    <div class="inner-box">
+                        <div class="content">
+                            <div class="dashboard">
+                                <div class="memory-create">
+                                    <div>
+                                        <h2>✨ Quick Actions</h2>
+                                        <p>Easily capture and relive your memories</p>
+                                    </div>
+                                    <div class="items">
+                                        <div><a href="create-memory.html">➕ Create Memory</a></div>
+                                        <div><a href="create-album.html">📂 Create Album</a></div>
+                                        <div><a href="ai-memory-video.html">🎥 Memory Video</a></div>
+                                        <div><a href="#">🔄 Reminisce</a></div>
+                                    </div>
+                                </div>
+                                <div class="memory-count">
+                                    <div>
+                                        <h2>📊 Your Memory Overview</h2>
+                                        <p>A snapshot of your memory collection</p>
+                                    </div>
+                                    <div class="items">
+                                        <div><span>Memories :</span> <span id="memories-count"> 10</span></div>
+                                        <div><span>Albums :</span> <span id="album-count"> 10</span></div>
+                                        <div><span>Milestones :</span> <span id="mile-count"> 10</span></div>
+                                        <div><span>Voice Notes :</span> <span id="voice-count"> 10</span></div>
+                                    </div>
+                                </div>
+                                <div id="memroy-map">
+                                    <div>
+                                        <h2>🗺️ Memory Map Preview</h2>
+                                        <p>Explore your memories on an interactive world map</p>
+                                    </div>
+                                </div>
+                                <div id="collaboration-album">
+                                    <div>
+                                        <h2>🤝 Your Collaborative Albums</h2>
+                                        <p>Albums shared with friends and family</p>
+                                    </div>
+                                    <div>
+                                        <button class="btn">🔗 View All</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <div id="footer"></div>
+    </div>
+</body>
+<script type="module" src="../assets/dashboard/header-aside-load.js"></script>
+<script type="module" src="../assets/dashboard/dashboard.js"></script>
+<script type="module" src="../assets/dashboard/getUser.js"></script>
+
+</html>

@@ -200,7 +200,7 @@ main.lending-page {
 .inner-box {
   display: grid;
   align-items: center;
-  padding: 2rem 3rem;
+  padding: 1rem 2rem;
   grid-template-columns: 1fr 40%;
 }
 
@@ -282,7 +282,7 @@ main.lending-page {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   main.lending-page {
     overflow: auto;
   }
