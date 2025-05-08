@@ -129,7 +129,7 @@ h6 {
 
 /* Scroll bar design */
 div.inner-box::-webkit-scrollbar {
-  width: 1px;
+  width: 3px;
 }
 
 div.inner-box::-webkit-scrollbar-thumb {

@@ -109,7 +109,9 @@ document.addEventListener("DOMContentLoaded", () => {
           setTimeout(() => {
             window.location.href = "../dashboard/dashboard.html";
           }, 3000);
-          alert(`Welcome ${user.displayName} Login Successfully! redirecting...`);
+          alert(
+            `Welcome ${user.displayName} Login Successfully! redirecting...`
+          );
         })
         .catch((err) => {
           console.log(err);
@@ -122,9 +124,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
   }
-  onAuthStateChanged(auth,(user)=>{
-    if(user){
-        window.location.href = '../dashboard/dashboard.html'
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      window.location.href = "../dashboard/dashboard.html";
     }
-  })
+  });
 });
