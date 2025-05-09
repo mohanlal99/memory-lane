@@ -33,7 +33,7 @@
             border-radius: 5px;
         }
 
-        
+
 
         @media (max-width : 700px) {
             div.images-cloud {
@@ -49,21 +49,21 @@
         <div id="header"></div>
         <main>
             <section class="section">
-                    <div id="loader">
-                        <div class="loading"></div>
-                    </div>
+                <div id="loader">
+                    <div class="loading"></div>
+                </div>
                 <div id="sidebar"></div>
 
                 <div class="outer-box">
 
-                    <h1>📸 Create a New Memory <p style="font-size: 1rem;">Capture and preserve a special moment by
+                    <h1>📸 Create a New Memory <p>Capture and preserve a special moment by
                             adding photos, stories, and more.</p>
                     </h1>
 
                     <div class="inner-box">
                         <div class="content">
                             <div class="memory-create">
-                                <form id="createMemoryForm" style="margin-bottom: 100px;">
+                                <form id="createMemoryForm">
                                     <div>
                                         <div class="basic-details">
                                             <h3>📝 Basic Information</h3>
@@ -87,7 +87,9 @@
                                                 <input required style="width: fit-content;" type="text" name="location"
                                                     id="locationInput" placeholder="Detecting your Location..."
                                                     readonly>
-                                                <input style="font-size: .8rem; background: none; outline: none; border: none;" readonly type="text" name="address" id="addressInput">
+                                                <input
+                                                    style="font-size: .8rem; background: none; outline: none; border: none;"
+                                                    readonly type="text" name="address" id="addressInput">
                                                 <button class="btn" type="button" id="locationButton">📍 Use My
                                                     Location</button>
                                                 <div id="map" style=" margin: 1.2rem 0; height: 250px; width:250px;">
@@ -176,14 +178,17 @@
                                                 </div>
                                                 <div>
                                                     <input type="radio" value="Public" name="privacy"
-                                                        id="privacy-public"><label for="privacy-public">🌍 Public </label>
+                                                        id="privacy-public"><label for="privacy-public">🌍 Public
+                                                    </label>
 
                                                 </div>
                                             </div>
                                         </div>
                                         <div>
-                                            <p id="errorMessage" style="font-size: 1.2rem; color: red; display: none; "></p>
-                                            <button id="createMemorySubmitBtn" class="btn btn-md" type="submit">Create Memory</button>
+                                            <p id="errorMessage" style="font-size: 1.2rem; color: red; display: none; ">
+                                            </p>
+                                            <button id="createMemorySubmitBtn" class="btn btn-md" type="submit">Create
+                                                Memory</button>
                                         </div>
                                     </div>
                                 </form>

@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="topbox">
                             <div class="nav-items">
                                 <div class="item"><a href="dashboard.html">🏠 Dashboard</a></div>
+                                <div class="item"><a href="all-memories.html">🖼️ All Memories</a></div>
                                 <div class="item"><a href="create-memory.html">📝 Add Memory</a></div>
                                 <div class="item"><a href="create-album.html">📂 Albums</a></div>
                                 <!-- <div class="item"><a href="#">🗓️ Memories Timeline</a></div> -->

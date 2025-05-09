@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const loader = document.getElementById("loader");
   const createMemoryForm = document.getElementById("createMemoryForm");
   const submitBtn = document.getElementById("createMemorySubmitBtn");
-  let userCollectionMemorise = collection(fdb, "users", user.uid, "memories");
 
   //   userCollectionMemorise()
   //   Create Memory and store in firebase
@@ -80,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       // console.log(memoryDoc.id);
       alert("Memory added successfully!");
-      window.location.href = "dashboard.html"
+      window.location.href = "all-memories.html"
       
     } catch (error) {
       console.log(error);

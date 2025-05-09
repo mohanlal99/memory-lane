@@ -5,6 +5,10 @@
 .outer-box {
   padding: 0.5rem 0rem 1rem 3rem;
 }
+
+.outer-box > h1 > p {
+  font-size: 1rem;
+}
 /* Header section styles */
 
 /* There is logo css */
@@ -48,7 +52,7 @@ body {
 
 .outer-box > h1 {
   font-size: 2.5rem;
-  margin: 0 1rem 1rem -30px;
+  margin: 0 1rem 0.4rem -30px;
   padding-left: 10px;
   border-bottom: 2px solid var(--secondary);
   border-radius: 10px;
@@ -65,6 +69,7 @@ div.inner-box {
   height: calc(100vh - 8rem);
   padding-right: 2rem;
   overflow-y: auto;
+  padding-bottom: 200px;
 }
 
 #header {
@@ -144,7 +149,6 @@ aside .nav-items > div > a {
   color: var(--secondary);
 }
 
-
 /* loader */
 div#loader {
   display: none;
@@ -156,7 +160,7 @@ div#loader {
   background-color: rgba(0, 0, 0, 0.792);
 }
 
-div#loader>div {
+div#loader > div {
   position: relative;
   height: 100px;
   width: 100px;
@@ -168,18 +172,91 @@ div#loader>div {
   animation: rotateLoader 2s linear infinite;
 }
 
+/* Memroy card css */
+
+.memories-cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0rem 1rem;
+  justify-content: start;
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 0.6rem;
+  max-width: 400px;
+  font-family: sans-serif;
+  /* background: var(--secondary); */
+  box-shadow: inset 0 0 10px black;
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.card img {
+  height: 150px;
+  border-radius: 3px;
+  margin-bottom: 5px;
+  object-fit: contain;
+}
+
+.card small {
+  color: var(--success);
+}
+
+.card p {
+  margin: 2px 0;
+}
+
+.card .small-text {
+  font-size: 13px;
+  overflow: hidden;
+  color: gray;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.card .tags {
+  font-size: 12px;
+  color: var(--primary);
+}
+
 /* Keyframe for rotation */
 @keyframes rotateLoader {
   0% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 
   100% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 
+/* inner box effective css  */
+.effective {
+  /* padding: 16px; */
+  border-radius: 8px;
+  text-align: center;
+  box-shadow:inset  0 2px 6px rgba(0, 0, 0, 0.05);
+}
 
+.effective h3 {
+  color: var(--primary);
+  margin-bottom: 3px;
+  font-size: 2rem;
+}
+
+.effective p {
+  color: #555;
+  font-size: 1rem;
+  margin: 0;
+}
 
 
 
