@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Create Memory || Memory Lane</title>
+    <title>Create Memory || Memory Lane</title>
     <link rel="stylesheet" href="../assets/css/globles.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="../dashboard/css/create-memory.css">
@@ -18,6 +18,7 @@
         h1 {
             font-size: 33px;
         }
+
 
         div.images-cloud {
             display: grid;
@@ -79,13 +80,14 @@
                                             <div>
                                                 <p> Select Your Memory Date</p>
                                                 <input style="width: fit-content;" required placeholder="Date"
-                                                    type="date" name="title" id="memroy-date">
+                                                    type="date" name="date" id="memroy-date">
                                             </div>
                                             <div>
                                                 <p>Click on map</p>
-                                                <input required style="width: fit-content;" type="text"
+                                                <input required style="width: fit-content;" type="text" name="location"
                                                     id="locationInput" placeholder="Detecting your Location..."
                                                     readonly>
+                                                <input style="font-size: .8rem; background: none; outline: none; border: none;" readonly type="text" name="address" id="addressInput">
                                                 <button class="btn" type="button" id="locationButton">📍 Use My
                                                     Location</button>
                                                 <div id="map" style=" margin: 1.2rem 0; height: 250px; width:250px;">
@@ -154,7 +156,7 @@
                                         <div class="collaboration">
                                             <h3>👥 Collaboration & Privacy</h3>
                                             <div style="position: relative;">
-                                                <input type="email" id="collabInput"
+                                                <input name="collaboration" type="email" id="collabInput"
                                                     placeholder="use email see Collaboration user" />
                                                 <ul id="collabInputlist">enter email.....</ul>
                                             </div>
@@ -174,13 +176,13 @@
                                                 </div>
                                                 <div>
                                                     <input type="radio" value="Public" name="privacy"
-                                                        id="privacy-public"><label for="privacy-public">🌍 Public</
-                                                            for="privacy-public">
+                                                        id="privacy-public"><label for="privacy-public">🌍 Public </label>
 
                                                 </div>
                                             </div>
                                         </div>
                                         <div>
+                                            <p id="errorMessage" style="font-size: 1.2rem; color: red; display: none; "></p>
                                             <button id="createMemorySubmitBtn" class="btn btn-md" type="submit">Create Memory</button>
                                         </div>
                                     </div>
