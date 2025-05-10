@@ -1,9 +1,10 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+import { apiKey } from "../../.key.js";
 
 const firebaseConfig = {
-  apiKey: process.env.apiKey,
+  apiKey: apiKey,
   authDomain: "memory-lane-5884f.firebaseapp.com",
   projectId: "memory-lane-5884f",
   storageBucket: "memory-lane-5884f.firebasestorage.app",
