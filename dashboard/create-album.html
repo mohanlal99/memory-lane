@@ -15,6 +15,29 @@
         h1 {
             font-size: 33px;
         }
+
+        .memory-selector {
+            position: relative;
+        }
+
+        .album-list {
+            display: flex;
+            position: absolute;
+            max-height: 200px;
+            overflow-y: auto;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .album-list label {
+            margin: 2px 0;
+            padding: .2rem;
+            display: flex;
+            border-radius: 5px;
+            background-color: rgb(232, 232, 232);
+            display: block;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -60,11 +83,10 @@
                                         <button id="add-memories" class="add-memories btn ">➕ Add
                                             memories</button>
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>
+                        <div id="footer"></div>
                     </div>
                 </div>
             </section>
@@ -75,20 +97,18 @@
                         <div><input id="album-title" type="text" name="title" placeholder="Album Title"></div>
                         <div><input id="album-des" type="text" name="description" placeholder="Album Description"></div>
 
-                        <div>
-                            <select name="memoryIds">
-                                <option value="">Select Memory</option>
-                                <option value="mem1">Memory 1</option>
-                                <option value="mem2">Memory 2</option>
-                            </select>
+                        <div class="memory-selector">
+                            <button type="button" id="memory-album-Btn" class="btn">Select Memories ⬇️</button>
+                            <div id="memory-album-List" class="album-list"></div>
                         </div>
+                        <input type="hidden" name="memoryIds" id="memoryIdsInput">
                         <!-- <div><input type="text" name="collaborators" placeholder="Collaborators (comma separated)"> </div> -->
                         <div><button class="btn" type="submit">Create Album</button></div>
                     </form>
                 </div>
             </div>
         </main>
-        <div id="footer"></div>
+        
     </div>
 </body>
 <script type="module" src="../assets/dashboard/header-aside-load.js"></script>

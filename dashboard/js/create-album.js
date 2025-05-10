@@ -6,6 +6,7 @@ import {
   updateDoc,
   increment,
   addDoc,
+  getDocs,
   collection,
 } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 import { getAlbums } from "./getAllAlbums.js";
@@ -21,6 +22,38 @@ document.addEventListener("DOMContentLoaded", () => {
   createAlbumBtn.addEventListener("click", toggleCreateAlbum);
   closeBtn.addEventListener("click", toggleCreateAlbum);
 
+  const albumBtn = document.getElementById("memory-album-Btn");
+  const albumList = document.getElementById("memory-album-List");
+  const memoryIdsInput = document.getElementById("memoryIdsInput");
+
+  // Toggle album
+  albumBtn.addEventListener("click", () => {
+    albumList.style.display =
+      albumList.style.display === "block" ? "none" : "block";
+  });
+
+  // Close album if clicked outside
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".memory-selector")) {
+      albumList.style.display = "none";
+    }
+  });
+
+  // Update hidden input on selection
+  albumList.addEventListener("change", () => {
+    const checkedBoxes = albumList.querySelectorAll(
+      'input[type="checkbox"]:checked'
+    );
+    const selectedIds = Array.from(checkedBoxes).map((cb) => cb.value);
+    memoryIdsInput.value = JSON.stringify(selectedIds);
+    albumBtn.textContent =
+      selectedIds.length > 0
+        ? `${selectedIds.length} selected ⬇️`
+        : "Select Memories ⬇️";
+  });
+
+  populateMemoriesalbum();
+
   const createAlbumForm = document.getElementById("createAlbumForm");
   createAlbumForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -34,7 +67,12 @@ document.addEventListener("DOMContentLoaded", () => {
       };
       const mem = [];
       if (data.memoryId) {
-        mem.push(data.memoryId);
+        const ids = JSON.parse(data.memoryId);
+        if (Array.isArray(ids)) {
+          mem.push(...ids);
+        } else {
+          mem.push(ids); // in case it’s a single ID, not array
+        }
       }
       // console.log(data);
 
@@ -42,6 +80,8 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Enter title and description");
         return;
       }
+      console.log(mem);
+      console.log(data);
 
       const userCollection = collection(fdb, "users", user.uid, "albums");
       await addDoc(userCollection, {
@@ -70,3 +110,42 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+async function populateMemoriesalbum() {
+  const user = getCurrentUser();
+  const albumList = document.getElementById("memory-album-List");
+
+  albumList.innerHTML = "Loading...";
+
+  try {
+    const userCollectionMemories = collection(
+      fdb,
+      "users",
+      user.uid,
+      "memories"
+    );
+    const querySnapshot = await getDocs(userCollectionMemories);
+
+    if (querySnapshot.empty) {
+      albumList.innerHTML = "<p style='padding:10px'>No memories found</p>";
+      return;
+    }
+
+    albumList.innerHTML = "";
+
+    querySnapshot.forEach((docSnap) => {
+      const memory = docSnap.data();
+      const memoryId = docSnap.id;
+      const label = document.createElement("label");
+      label.id = memoryId;
+      label.innerHTML = `
+      <input id="${memoryId}" style="width: 20px;" type="checkbox" value="${memoryId}">
+        <span>  ${memory.title || "Untitled Memory"} </span>
+      `;
+      albumList.appendChild(label);
+    });
+  } catch (error) {
+    albumList.innerHTML = "<p style='padding:10px'>Error loading memories</p>";
+    console.error(error);
+  }
+}

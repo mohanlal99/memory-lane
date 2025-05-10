@@ -30,14 +30,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       // Slice the first 2 documents if on the dashboard page
       documentsToDisplay = querySnapshot.docs.slice(0, 2);
     }
-  memoriesCards.innerHTML = "";
+    if (memoriesCards) {
+      memoriesCards.innerHTML = "";
 
-    documentsToDisplay.forEach((doc) => {
-      const memory = doc.data();
+      documentsToDisplay.forEach((doc) => {
+        const memory = doc.data();
 
-      const card = document.createElement("div");
-      card.classList.add("card");
-      card.innerHTML = `
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.innerHTML = `
           <h3>${memory.title || "Untitled"}</h3>
           <small>Created on: ${
             memory.createdAt
@@ -57,16 +58,44 @@ document.addEventListener("DOMContentLoaded", async () => {
           <p class="small-text">
             <strong>Location:</strong> 
             <abbr title="${memory.location?.address || ""}">${
-        memory.location?.address || "Unknown location"
-      }</abbr>
+          memory.location?.address || "Unknown location"
+        }</abbr>
           </p>
   
           <p><strong>Privacy:</strong> ${memory.privacy || "Private"}</p>
         `;
 
-      memoriesCards.appendChild(card);
-    });
+        memoriesCards.appendChild(card);
+      });
+    }
+    return documentsToDisplay;
   } catch (error) {
     alert("Something wen't wrong");
   }
 });
+
+export async function getAllMermories() {
+  try {
+    const user = getCurrentUser();
+    const userCollectionMemories = collection(
+      fdb,
+      "users",
+      user.uid,
+      "memories"
+    );
+    const querySnapshot = await getDocs(userCollectionMemories);
+
+    const memories = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    if(memories.length == 0){
+      return []
+    }
+
+    return memories;
+  } catch (error) {
+    console.error("Error fetching memories:", error);
+    throw error;
+  }
+}

@@ -73,8 +73,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     
     
     `;
+    // Footer content (this is what you wanted)
+    footerhtml.classList.add("footer");
+    footerhtml.innerHTML = `
+      <p>Created by <strong>Mohanlal</strong> &copy; ${new Date().getFullYear()}</p>
+    `;
+
     header.appendChild(headerhtml);
     aside.appendChild(asidehtml);
+    footer.appendChild(footerhtml);
     document.getElementById("logoutsidebar").addEventListener("click", logout);
     document.getElementById("logoutBtn").addEventListener("click", logout);
     function logout() {

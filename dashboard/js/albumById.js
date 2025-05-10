@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
   async function getAlbumById() {
     try {
       const memoriesContainer = document.getElementById("memories-cards");
+      const allMermories = document.querySelector('#all-mermories');  
+
       memoriesContainer.innerHTML = "";
       const albumId = getQueryParam("key");
 
@@ -36,6 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
+      if(memories.length === 0){
+        allMermories.style.display = 'none'
+      }
       // Here you can do something with the fetched memories, for example, render them
       console.log(memories);
       memories.forEach((memory) => {
