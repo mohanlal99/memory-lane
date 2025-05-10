@@ -28,9 +28,15 @@ body {
   color: var(--text);
 }
 body.dark {
-  filter: invert();
+  /* filter: invert();
   background-color: #0b000e;
-  color: var(--text-dark);
+  color: var(--text-dark); */
+  --background: #000000;
+  --text: #ffffff;
+  --primary: #6df40c; /* blue-500 */
+  --secondary: #c8cb00; /* slate-500 */
+  --success: #4a5a55;
+  --warning: rgb(1, 20, 66);
 }
 
 img {

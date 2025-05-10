@@ -5,10 +5,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const header = document.getElementById("header");
   const aside = document.getElementById("sidebar");
   const footer = document.getElementById("footer");
+
+
+
   if (header || aside || footer) {
     let headerhtml = document.createElement("header");
     let asidehtml = document.createElement("aside");
     let footerhtml = document.createElement("footer");
+
     headerhtml.innerHTML = `
                 <div class="logo">
                     <h2>Memory Lane</h2>
@@ -41,8 +45,10 @@ document.addEventListener("DOMContentLoaded", () => {
                             </button>
                         </div>
                     </div>
+                    <button class=' btn-xs' id="toggleSidebarBtn">☰</button>
                 </nav>
     `;
+
     asidehtml.classList.add("sidebar");
     asidehtml.innerHTML = `
                         <div class="topbox">
@@ -51,7 +57,6 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <div class="item"><a href="all-memories.html">🖼️ All Memories</a></div>
                                 <div class="item"><a href="create-memory.html">📝 Add Memory</a></div>
                                 <div class="item"><a href="create-album.html">📂 Albums</a></div>
-                                <!-- <div class="item"><a href="#">🗓️ Memories Timeline</a></div> -->
                                 <div class="item"><a href="memory-map.html">🗺️ Memory Map</a></div>
                                 <div class="item"><a href="ai-memory-video.html">🎥 AI Memory Video</a></div>
                                 <div class="item"><a href="collaborative-albums.html">👥 Collaborative Albums</a></div>
@@ -59,8 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                         <div class="bottom-box">
                             <div class="nav-items">
-                                <div class="item"><a href="profile.html">👤 Profile</a>
-                                </div>
+                                <div class="item"><a href="profile.html">👤 Profile</a></div>
                                 <div class="item"><a href="settings.html">⚙️ Settings</a></div>
                                 <div id="logoutsidebar">
                                     <button id="logoutBtn" class="btn btn-warning ">
@@ -70,10 +74,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                 </div>
                             </div>
                         </div>
-                    
-    
-    `;
-    // Footer content (this is what you wanted)
+                     `;
+
+    // Footer content
     footerhtml.classList.add("footer");
     footerhtml.innerHTML = `
       <p>Created by <strong>Mohanlal</strong> &copy; ${new Date().getFullYear()}</p>
@@ -82,17 +85,60 @@ document.addEventListener("DOMContentLoaded", () => {
     header.appendChild(headerhtml);
     aside.appendChild(asidehtml);
     footer.appendChild(footerhtml);
+
+    // Add event listeners for logout
     document.getElementById("logoutsidebar").addEventListener("click", logout);
     document.getElementById("logoutBtn").addEventListener("click", logout);
+
     function logout() {
       signOut(auth)
         .then(() => {
-            window.location.href = '../../templates/login.html'
+          window.location.href = "../../templates/login.html";
           alert("Sign out successfully");
         })
         .catch((err) => {
           console.log(err);
         });
     }
+
+    const darkModeBtn = document.getElementById("dark-mode");
+
+    if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark");
+        darkModeBtn.innerHTML = "🌙"; // Sun icon for dark mode (you can change it to something else)
+      } else {
+        document.body.classList.remove("dark");
+        darkModeBtn.innerHTML = "🌞"; // Moon icon for light mode
+      }
+
+
+    // Add sidebar toggle functionality
+    let flg = true
+    const toggleSidebarBtn = document.getElementById("toggleSidebarBtn");
+
+    toggleSidebarBtn.addEventListener("click", () => {
+        flg = !flg
+      document.querySelector("aside.sidebar").classList.toggle("active");
+      if (flg) {
+          toggleSidebarBtn.innerHTML = "☰"; 
+        } else {
+            toggleSidebarBtn.innerHTML = "❌"; 
+        }
+    });
+
+
+    darkModeBtn.addEventListener("click", () => {
+        // Toggle dark mode class on body
+        document.body.classList.toggle("dark");
+  
+        // Update localStorage with the new preference
+        if (document.body.classList.contains("dark")) {
+          localStorage.setItem("darkMode", "enabled");
+          darkModeBtn.innerHTML = "🌙"; // Sun icon for dark mode
+        } else {
+          localStorage.setItem("darkMode", "disabled");
+          darkModeBtn.innerHTML = "🌞"; // Moon icon for light mode
+        }
+      });
   }
 });

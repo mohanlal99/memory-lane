@@ -149,7 +149,6 @@ aside .nav-items > div > a {
   color: var(--secondary);
 }
 
-
 .footer {
   text-align: center;
   font-size: 1.3rem;
@@ -239,6 +238,11 @@ div#loader > div {
   color: var(--primary);
 }
 
+/* togal btn display none */
+#toggleSidebarBtn {
+  display: none;
+}
+
 /* Keyframe for rotation */
 @keyframes rotateLoader {
   0% {
@@ -255,7 +259,7 @@ div#loader > div {
   /* padding: 16px; */
   border-radius: 8px;
   text-align: center;
-  box-shadow:inset  0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .effective h3 {
@@ -270,15 +274,10 @@ div#loader > div {
   margin: 0;
 }
 
-
-
-
-
-
-
-
-
 @media (max-width: 700px) {
+  #toggleSidebarBtn {
+    display: flex;
+  }
   header > nav > div.nav-links {
     display: none;
   }
@@ -294,7 +293,28 @@ div#loader > div {
     margin: 0;
   }
   div#sidebar {
-    display: none;
+    display: grid; /* your current */
+  }
+
+  /* New absolute positioning sidebar */
+  aside.sidebar {
+    position: absolute;
+    top: 70px; /* below header */
+    left: 0;
+    width: 220px;
+    height: calc(100vh - 70px);
+    background: var(--background);
+    z-index: 10000;
+    transform: translateX(-100%); /* hidden to left */
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* When sidebar is active (visible) */
+  aside.sidebar.active {
+    transform: translateX(0);
   }
   .outer-box {
     padding: 0 0.3rem;
