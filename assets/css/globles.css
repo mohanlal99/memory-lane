@@ -1,26 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Comic+Relief:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 :root {
-  --primary: #5d21bf;   /* blue-500 */
-  --secondary: #4bfce1; /* slate-500 */
-  --success: #d678f0;   /* emerald-500 */
-  --info: #0ea5e9;      /* sky-500 */
-  --warning: #f59e0b;   /* amber-500 */
-  --danger: #ef4444;    /* red-500 */
-  --light: #f3f4f6;     /* gray-100 */
-  --dark: #1f2937;      /* gray-800 */
-  --background: #d4f1f4;
-  --text: #111827;      /* gray-900 */
-  --text-dark: #ffffff;
+  --background: #daeaeb;
+  --text: #000;
+  --primary: #2c0637; /* blue-500 */
+  --secondary: #f59e0b; /* slate-500 */
+  --success: #10b981;
+  --warning: rgb(250, 62, 62);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: var(--font-primary);
-  font-weight: normal;
+  font-family: "Baloo 2", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: 500;
 }
-html , body{
+html,
+body {
   width: 100%;
   height: 100%;
 }
@@ -30,9 +28,15 @@ body {
   color: var(--text);
 }
 body.dark {
-  filter: invert();
-  background-color: #340744;
-  color: var(--text-dark);
+  /* filter: invert();
+  background-color: #0b000e;
+  color: var(--text-dark); */
+  --background: #000000;
+  --text: #ffffff;
+  --primary: #6df40c; /* blue-500 */
+  --secondary: #c8cb00; /* slate-500 */
+  --success: #4a5a55;
+  --warning: rgb(1, 20, 66);
 }
 
 img {
@@ -40,27 +44,101 @@ img {
   height: 100%;
   object-fit: cover;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+abbr {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
 
 .btn {
-  background-color: var(--secondary-color);
-  color: var(--surface-color);
-  border-radius: var(--border-radius);
-  border: var(--border-color);
-  padding: var(--padding-sm);
-  transition: var(--transition-fast);
+  background-color: var(--secondary);
+  color: var(--background);
+  border-radius: 5px;
+  border: 2px solid var(--secondary);
+  padding: 0.2rem 1rem;
+  transition: 1s linear;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-.btn-md {
-  padding: var(--padding-md);
-}
-.btn-lg {
-  padding: var(--padding-lg);
-}
+
 .btn-success {
-  background-color: var(--accent-strong);
-  color: var(--surface-color);
+  background-color: var(--secondary);
+  color: var(--background);
 }
 .btn-warning {
-  background-color: var(--button-warning);
-  color: var(--surface-color);
+  background-color: rgb(168, 31, 10);
+  color: white;
+  border: none;
+}
+
+.btn-md {
+  padding: 0.9rem 1.5rem;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+.btn-xs {
+  padding: 0.2rem;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+}
+.btn-xs:hover {
+  cursor: pointer;
+  text-shadow: 2px 2px 5px rgb(2, 2, 30);
+}
+
+.btn:hover {
+  background-color: var(--primary);
+}
+
+.btn-warning:hover {
+  background-color: rgb(192, 57, 36);
+  color: white;
+  border: none;
+}
+
+/* Section */
+.section {
+  padding: 2rem 0;
+}
+
+.outer-box {
+  padding: 0 3rem;
+}
+
+@media (max-width: 700px) {
+  .section {
+    padding: 0rem 0;
+  }
+
+  .outer-box {
+    padding: 0 0rem;
+  }
+}
+
+
+/* Scroll bar design */
+div.inner-box::-webkit-scrollbar {
+  width: 3px;
+}
+
+div.inner-box::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 4px;
 }

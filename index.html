@@ -2,31 +2,100 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resume Builder | Home</title>
-    <link rel="stylesheet" href="./assets/css/globles.css">
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory Lane | Home</title>
+  <link rel="stylesheet" href="./assets/css/globles.css" />
+  <link rel="stylesheet" href="./assets/css/lending-page.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+   
+  </style>
 </head>
 
 <body>
-    <div class="container ">
-        <div id="header"></div>
-        <main>
-            <section class="section">
-                <div class="outer-box">
-                    <div class="inner-box">
-                        <div class="content">
-                            <!-- <i  class="fa-solid fa-house text-3xl"></i> -->
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
+  <header>
+    <div class="logo">
+      <h2>Memory Lane</h2>
+      <p>Mohanlal</p>
     </div>
+    <nav>
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav-links" id="navLinks">
+        <a href="#">Home</a>
+        <a href="#features">Features</a>
+        <a class="btn btn-success " href="./templates/sign-up.html">Sign Up</a>
+        <a class="btn btn-success " href="./templates/login.html">Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="lending-page">
+    <section class="section">
+      <div class="outer-box">
+        <div class="inner-box">
+          <div class="content">
+            <div class="heading">
+              <h2>Welcome to Memory Lane</h2>
+              <p>Relive your precious moments. Reconnect with the past. Cherish your memories.</p>
+            </div>
+            <div class="memory">
+              <div>
+                <span>📸</span>
+                <div>
+                  <h3>Create Digital Albums</h3>
+                  <p>Organize your favorite photos, videos, and stories in one place.</p>
+                </div>
+              </div>
+
+              <div>
+                <span>🕰️</span>
+                <div>
+                  <h3>Relive Moments by Date</h3>
+                  <p>Travel through your life timeline and revisit special dates.</p>
+                </div>
+              </div>
+
+              <div>
+                <span>💬</span>
+                <div>
+                  <h3>Share with Loved Ones</h3>
+                  <p>Invite family and friends to contribute and comment on shared memories.</p>
+                </div>
+              </div>
+            </div>
+            <div class="action-btn">
+
+              <button class="btn btn-md"> <a href="./templates/login.html">Create Memory</a></button>
+              <button class="btn btn-md"> <a href="./templates/sign-up.html">Sign Up</a></button>
+            </div>
+          </div>
+          <div class="right-box">
+            <div class="images">
+              <img src="./images/lendingpage/image1.jpg" alt="stories">
+              <img src="./images/lendingpage/image2.avif" alt="stories">
+              <img src="./images/lendingpage/image3.jpg" alt="stories">
+              <img src="./images/lendingpage/image4.jpg" alt="stories">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./assets/js/main.js"></script>
+  <script>
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('active');
+    }
+  </script>
 </body>
 
 </html>

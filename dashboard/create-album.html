@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Create Albums || Memory Lane</title>
+    <link rel="stylesheet" href="../assets/css/globles.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="./css/album.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        h1 {
+            font-size: 33px;
+        }
+
+        .memory-selector {
+            position: relative;
+        }
+
+        .album-list {
+            display: flex;
+            position: absolute;
+            max-height: 200px;
+            overflow-y: auto;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .album-list label {
+            margin: 2px 0;
+            padding: .2rem;
+            display: flex;
+            border-radius: 5px;
+            background-color: rgb(232, 232, 232);
+            display: block;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="header"></div>
+        <main>
+            <section class="section">
+                <div id="sidebar"></div>
+                <div style="position: relative;" class="outer-box">
+                    <h1>📂 Your Albums <p>Collect, cherish, and revisit your favorite memories all in one place.</p>
+                    </h1>
+
+                    <div class="inner-box">
+                        <div class="effective">
+                            <h3>💖 Your stories deserve to be remembered.</h3>
+                            <p>Start curating today and make every memory timeless.</p>
+                        </div>
+                        <div class="content">
+                            <div style="text-align: end; margin-bottom: 10px;">
+                                <button id="createAlbumBtn" style="position: absolute ; top: 20px; right: 35px;"
+                                    class="btn btn-md  ">✨ Create Album</button>
+                            </div>
+                            <div class="all-albums">
+                                <div id="all-albums" class="albums">
+                                    <div class="album-card">
+                                        <div class="album-icon">
+                                            <img src="../images/fill-folder.png" alt="album-icon">
+                                        </div>
+                                        <div class="album-title">Jaipur Trip Album</div>
+                                        <p class="album-description">Memories from Jaipur visit with friends.
+                                        </p>
+                                        <button id="add-memories" class="add-memories btn ">➕ Add
+                                            memories</button>
+                                    </div>
+                                    <div class="album-card">
+                                        <div class="album-icon">
+                                            <img src="../images/fill-folder.png" alt="album-icon">
+                                        </div>
+                                        <div class="album-title">Jaipur Trip Album</div>
+                                        <p class="album-description">Memories from Jaipur visit with friends.
+                                        </p>
+                                        <button id="add-memories" class="add-memories btn ">➕ Add
+                                            memories</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="footer"></div>
+                    </div>
+                </div>
+            </section>
+            <div class="model create-albums" id="create-albums">
+                <div class="create-album-form">
+                    <span id="close">❌</span>
+                    <form id="createAlbumForm">
+                        <div><input id="album-title" type="text" name="title" placeholder="Album Title"></div>
+                        <div><input id="album-des" type="text" name="description" placeholder="Album Description"></div>
+
+                        <div class="memory-selector">
+                            <button type="button" id="memory-album-Btn" class="btn">Select Memories ⬇️</button>
+                            <div id="memory-album-List" class="album-list"></div>
+                        </div>
+                        <input type="hidden" name="memoryIds" id="memoryIdsInput">
+                        <!-- <div><input type="text" name="collaborators" placeholder="Collaborators (comma separated)"> </div> -->
+                        <div><button class="btn" type="submit">Create Album</button></div>
+                    </form>
+                </div>
+            </div>
+        </main>
+        
+    </div>
+</body>
+<script type="module" src="../assets/dashboard/header-aside-load.js"></script>
+<script type="module" src="../assets/dashboard/getUser.js"></script>
+<script type="module" src="../dashboard/js/create-album.js"></script>
+<script type="module" src="../dashboard/js/getAllAlbums.js"></script>
+
+</html>
