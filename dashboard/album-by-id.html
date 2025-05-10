@@ -1,0 +1,104 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your album || Memory Lane</title>
+    <link rel="stylesheet" href="../assets/css/globles.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../dashboard/css/all-memory.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        h2 {
+            font-size: 33px;
+        }
+
+        div#all-mermories {
+            box-shadow: inset 0 0 2px rgb(96, 96, 96);
+        }
+
+        div#all-mermories>div>h3 {
+            font-size: 2rem;
+        }
+
+        div#all-mermories p {
+            padding-left: 4px;
+        }
+        
+
+        .memories-cards {
+            border: none;
+            display: flex;
+            align-items: start;
+            justify-content: start;
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="header"></div>
+        <main>
+            <section class="section">
+                <div id="sidebar"></div>
+                <div class="outer-box">
+                    <h1 id="albumName"></h1>
+                    <div class="inner-box">
+                        <div class="effective">
+                            <h3>🤝 Collaborators</h3>
+                            <p>Great minds working together to achieve extraordinary results.</p>
+                        </div>
+                        <div class="content">
+                            <div class="collaborators">
+                                <div id="collab-list">No Collaborators</div>
+                            </div>
+                            <div id="all-mermories">
+                                <div style="margin-bottom: 10px;">
+                                    <h3>📸 Shared Memories</h3>
+                                    <p>Moments we've created and cherished together, captured forever.</p>
+                                </div>
+                                <div id="memories-cards" class="memories-cards">
+                                    <div class="memory-skeleton">
+                                        <div class="skeleton-title"></div>
+                                        <div class="skeleton-date"></div>
+
+                                        <div class="skeleton-description"></div>
+                                        <div class="skeleton-tags"></div>
+
+                                        <div class="skeleton-image"></div>
+
+                                        <div class="skeleton-location"></div>
+                                        <div class="skeleton-privacy"></div>
+                                    </div>
+                                    <div class="memory-skeleton">
+                                        <div class="skeleton-title"></div>
+                                        <div class="skeleton-date"></div>
+
+                                        <div class="skeleton-description"></div>
+                                        <div class="skeleton-tags"></div>
+
+                                        <div class="skeleton-image"></div>
+
+                                        <div class="skeleton-location"></div>
+                                        <div class="skeleton-privacy"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <div id="footer"></div>
+    </div>
+</body>
+<script type="module" src="../assets/dashboard/header-aside-load.js"></script>
+<script type="module" src="../assets/dashboard/getUser.js"></script>
+<script type="module" src="../dashboard/js/albumById.js"></script>
+<!-- <script type="module" src="../assets/dashboard/dashboard.js"></script> -->
+
+
+</html>
