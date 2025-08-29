@@ -4,12 +4,8 @@ import {
   doc,
   collection,
   getDocs,
+  deleteDoc,
 } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-// export function getQueryParam(param) {
-//   const urlParams = new URLSearchParams(window.location.search);
-//   return urlParams.get(param);
-// }
 
 export async function getAlbums() {
   try {
@@ -28,34 +24,51 @@ export async function getAlbums() {
     querySnapshot.forEach((docSnap) => {
       const album = docSnap.data();
       const albumId = docSnap.id;
-      const memory = album.memoryIds;
+      const memory = album.memoryIds || [];
       const albumCard = document.createElement("div");
       albumCard.classList.add("album-card");
-      let flag = memory.length > 0;
-      const imageSrc = flag
-        ? "../images/fill-folder.png"
-        : "../images/folder.png";
-    //   console.log(flag ? "es" : "no");
+
+      const imageSrc =
+        memory.length > 0 ? "../images/fill-folder.png" : "../images/folder.png";
+
       albumCard.innerHTML = `
           <div class="album-icon">
               <img src="${imageSrc}" alt="album-icon">
           </div>
           <div class="album-title">${album.title}</div>
           <p class="album-description">${album.description}</p>
-          `;
-      //   <button class="add-memories btn">➕ Add memories</button>
+          <div class="album-actions">
+              <button class="btn view-btn">👁 View</button>
+              <button class="btn edit-btn">✏️ Edit</button>
+              <button class="btn delete-btn">🗑 Delete</button>
+          </div>
+      `;
 
       albumsContainer.appendChild(albumCard);
-      albumCard.addEventListener("click", () => [
-        (window.location.href = `/dashboard/album-by-id.html?key=${albumId}`),
-      ]);
+
+      // View Album
+      albumCard.querySelector(".view-btn").addEventListener("click", () => {
+        window.location.href = `/dashboard/album-by-id.html?key=${albumId}`;
+      });
+
+      // Edit Album
+      albumCard.querySelector(".edit-btn").addEventListener("click", () => {
+        alert("Edit feature coming soon..."); // you can open edit modal here
+      });
+
+      // Delete Album
+      albumCard.querySelector(".delete-btn").addEventListener("click", async () => {
+        if (confirm(`Delete album "${album.title}"?`)) {
+          await deleteDoc(doc(fdb, "users", user.uid, "albums", albumId));
+          alert("Album deleted!");
+          getAlbums();
+        }
+      });
     });
   } catch (error) {
     console.log(error);
     alert("Something went wrong while fetching albums.");
   }
 }
-
-
 
 getAlbums();

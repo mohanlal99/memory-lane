@@ -3,13 +3,13 @@ import { getCurrentUser } from "../../assets/dashboard/getUser.js";
 import {
   doc,
   getDoc,
-  collection,
 } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   async function getAlbumById() {
     try {
       const memoriesContainer = document.getElementById("memories-cards");
-      const allMermories = document.querySelector('#all-mermories');  
+      const allMermories = document.querySelector("#all-mermories");
 
       memoriesContainer.innerHTML = "";
       const albumId = getQueryParam("key");
@@ -18,13 +18,16 @@ document.addEventListener("DOMContentLoaded", () => {
       const albumDocRef = doc(fdb, "users", user.uid, "albums", albumId);
       const albumSnap = await getDoc(albumDocRef);
 
-      //   console.log(albumSnap);
+      if (!albumSnap.exists()) {
+        alert("Album not found");
+        return;
+      }
 
       const albumData = { id: albumSnap.id, ...albumSnap.data() };
       const albumNameEl = document.getElementById("albumName");
       albumNameEl.innerHTML = `${albumData.title} <p>${albumData.description}</p>`;
 
-      const memoryIds = albumData.memoryIds || []; // Ensure memoryIds exist
+      const memoryIds = albumData.memoryIds || [];
       const memories = [];
 
       for (const memoryId of memoryIds) {
@@ -38,14 +41,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      if(memories.length === 0){
-        allMermories.style.display = 'none'
+      if (memories.length === 0) {
+        allMermories.style.display = "none";
       }
-      // Here you can do something with the fetched memories, for example, render them
-      console.log(memories);
+
       memories.forEach((memory) => {
         const card = document.createElement("div");
-        card.classList.add("card"); // optional class if you want to style cards
+        card.classList.add("card");
 
         card.innerHTML = `
           <h3>${memory.title || "Untitled"}</h3>
@@ -54,37 +56,27 @@ document.addEventListener("DOMContentLoaded", () => {
               ? new Date(memory.createdAt.seconds * 1000).toLocaleDateString()
               : "Unknown"
           }</small>
-    
-          <p class="small-text">
-            <strong>Description:</strong> ${memory.description || ""}
-          </p>
-          <p class="tags"><strong>Tags:</strong> ${memory.tags || ""}</p>
-    
+          <p><strong>Description:</strong> ${memory.description || ""}</p>
+          <p><strong>Tags:</strong> ${memory.tags || ""}</p>
           <img src="${
             memory.photos?.split(",")[0] || "../../images/noimg.jpeg"
           }" alt="Memory photo">
-    
-          <p class="small-text">
-            <strong>Location:</strong> 
-            <abbr title="${memory.location?.address || ""}">${
-          memory.location?.address || "Unknown location"
-        }</abbr>
-          </p>
-    
+          <p><strong>Location:</strong> ${
+            memory.location?.address || "Unknown location"
+          }</p>
           <p><strong>Privacy:</strong> ${memory.privacy || "Private"}</p>
         `;
 
         memoriesContainer.appendChild(card);
       });
-
-      //   console.log(albumData)
     } catch (error) {
       console.error("Error fetching album by ID:", error);
       alert(error.message || "Something went wrong while fetching album.");
-      return null;
     }
   }
+
   getAlbumById();
+
   function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);

@@ -12,8 +12,6 @@
         h1 {
             font-size: 33px;
         }
-
-     
     </style>
 </head>
 
@@ -31,6 +29,21 @@
                             <h3>📚 Memory Archive</h3>
                             <p>Easily browse through all your past experiences in one place.</p>
                         </div>
+                        <div id="search-memory">
+                            <input type="text" id="search-input" placeholder="search...">
+                            <div id="filter-bar">
+                                <label for="sort">Sort by:</label>
+                                <select id="sort">
+                                    <option value="newest">🆕 Newest First</option>
+                                    <option value="oldest">📜 Oldest First</option>
+                                    <option value="privacy-public">🌍 Public</option>
+                                    <option value="privacy-private">🔒 Private</option>
+                                    <option value="privacy-custom">⚙️ Custom</option>
+                                    <option value="location">📍 Location (A–Z)</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="content">
                             <div id="memories-cards" class="memories-cards">
                                 <div class="memory-skeleton">
@@ -62,7 +75,6 @@
                         </div>
                         <div id="footer"></div>
                     </div>
-                </div>
             </section>
         </main>
     </div>

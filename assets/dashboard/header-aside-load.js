@@ -89,6 +89,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Add event listeners for logout
     document.getElementById("logoutsidebar").addEventListener("click", logout);
     document.getElementById("logoutBtn").addEventListener("click", logout);
+    document.getElementById("setting").addEventListener("click", (e)=>{ 
+      window.location.href = '../dashboard/settings.html'
+    });
+
 
     function logout() {
       signOut(auth)

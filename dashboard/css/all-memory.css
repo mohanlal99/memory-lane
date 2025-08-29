@@ -1,67 +1,164 @@
 .memory-skeleton {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 0.6rem;
-    max-width: 400px;
-    width: 100%;
-    box-shadow: inset 0 0 10px black;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 0.6rem;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: inset 0 0 10px black;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background-color: #ffffff;
 }
 
 .memory-skeleton div {
-    background-color: rgba(128, 128, 128, 0.3);
-    border-radius: 4px;
-    animation: pulse infinite 1.4s ease-in-out;
+  background-color: rgba(128, 128, 128, 0.3);
+  border-radius: 4px;
+  animation: pulse infinite 1.4s ease-in-out;
 }
 
 .memory-skeleton .skeleton-title {
-    width: 62%;
-    height: 27px;
+  width: 62%;
+  height: 27px;
 }
 
 .memory-skeleton .skeleton-date {
-    width: 42%;
-    height: 14px;
+  width: 42%;
+  height: 14px;
 }
 
 .memory-skeleton .skeleton-description,
 .memory-skeleton .skeleton-tags,
 .memory-skeleton .skeleton-location,
 .memory-skeleton .skeleton-privacy {
-    width: 80%;
-    height: 14px;
+  width: 80%;
+  height: 14px;
 }
 
 .memory-skeleton .skeleton-image {
-    width: 100%;
-    height: 250px;
-    border-radius: 5px;
+  width: 100%;
+  height: 250px;
+  border-radius: 5px;
 }
+
+.card {
+  position: relative;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background: var(--background, #fff);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.card img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.card .btn-delete {
+  margin-top: 10px;
+  background: var(--warning);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.card .btn-delete:hover {
+  background: darkred;
+}
+
+#search-memory {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+#search-memory>input {
+  flex: 1;
+  max-width: 300px;
+  padding: 10px 14px;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#search-memory input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
+}
+
+#filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#filter-bar label {
+  font-weight: bold;
+  color: #333;
+}
+
+#filter-bar select {
+  padding: 8px 12px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#filter-bar select:hover {
+  border-color: #4a90e2;
+}
+
+#filter-bar select:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 6px rgba(74, 144, 226, 0.4);
+}
+
 
 /* Pulse animation */
 @keyframes pulse {
-    0% {
-        background-color: #ebebeb5c;
-    }
+  0% {
+    background-color: #ebebeb5c;
+  }
 
-    50% {
-        background-color: #a4a3a363;
-    }
+  50% {
+    background-color: #a4a3a363;
+  }
 
-    100% {
-        background-color: #f2f2f24c;
-    }
+  100% {
+    background-color: #f2f2f24c;
+  }
 }
 
 .memories-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-    border-radius: 10px;
-    box-shadow: inset 0px 0 2px black;
-    padding: 2rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: inset 0px 0 2px black;
+  padding: 2rem 2rem;
+}
+
+@media (min-width: 786px) {
+  .card img {
+    width: 80%;
+    margin: auto
+  }
 }
