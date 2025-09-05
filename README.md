@@ -1,4 +1,4 @@
-# 🧠 Memory Lane Project
+# 🧠 Memory Lane Project 
 
 **Memory Lane** is a digital scrapbook application that allows users to capture, organize, and relive their memories. It provides features such as memory creation with multimedia support, albums, tags, AI-generated videos, and an interactive memory map.
 
